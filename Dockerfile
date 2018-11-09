@@ -18,6 +18,8 @@ RUN apt-get update \
     php7.1-opcache \
     php7.1-zip \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+    
+RUN apt-get install -y msmtp msmtp-mta ca-certificates
 
 # MSMTP
 ADD msmtprc /etc/msmtprc
