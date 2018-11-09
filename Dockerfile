@@ -19,6 +19,14 @@ RUN apt-get update \
     php7.1-zip \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
+# MSMTP
+ADD msmtprc /etc/msmtprc
+RUN chmod 775 /etc/msmtprc && \
+    chown :www-data /etc/msmtprc && \
+    touch /var/log/msmtp.log && \
+    chmod 775 /var/log/msmtp.log && \
+    chown :www-data /var/log/msmtp.log
+    
 RUN usermod -u 1000 www-data
 
 EXPOSE 9000
